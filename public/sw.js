@@ -17,7 +17,7 @@ self.addEventListener('activate', event => {
 // fetch happens when something is loaded like image/css/scripts when we send manual fetch request
 // can listen for all fetch methods
 self.addEventListener('fetch', event => {
-	console.log('[Service Worker] Fetching something ...', event);
+	// console.log('[Service Worker] Fetching something ...', event);
 	event.respondWith(fetch(event.request));
 	// currently only send the request data, but this is where you can decide what to do based on connection status
 });

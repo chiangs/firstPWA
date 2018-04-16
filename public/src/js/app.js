@@ -26,36 +26,3 @@ window.addEventListener('beforeinstallprompt', event => {
 	deferredPrompt = event;
 	return false;
 });
-
-// Fetch and Promise API is not supported by older browsers, but required for PWA so polyfills are the answer.
-// Example of chaining `.then` aka `resolve` of promises
-// Here we get the response, map it to json and then pass the resulting data back to to a console log
-// GET
-fetch('https://www.httpbin.org/ip')
-	.then(response => {
-		console.log(response);
-		// where response is a js object
-		return response.json();
-	}) // where data is the body => {origin: "92.221.49.202"}
-	.then(data => console.log(data))
-	.catch(err => console.log(err));
-
-// POST
-fetch('https://www.httpbin.org/post', {
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json',
-		Accept: 'application/json' // only necessary if API specifies and sends other than json
-	},
-	mode: 'cors', // this is default. 'no-cors' allows you to pass along non-accessible data to display if you don't need to do anything with it.
-	body: JSON.stringify({
-		message: 'Does this work?'
-	})
-})
-	.then(response => {
-		console.log(response);
-		// where response is a js object
-		return response.json();
-	}) // where data is the body => {origin: "92.221.49.202"}
-	.then(data => console.log(data))
-	.catch(err => console.log(err));
